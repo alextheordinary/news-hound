@@ -1,0 +1,36 @@
+Bespoke News > Curate Your Rss Feeds
+
+Technology we want to use is: https://sabe.io/tutorials/rss-reader-node (rss-parser node module)
+
+Start App > User arrives at login page
+After login > New User Setup Module > Get started, Offer some choices of Feeds
+Cookie Session to keep you logged in (timed), or renews every time you log in
+If you exit and log back in you'll see your RSS feed choices and can change or update
+
+Sidebar and main page, responsive for mobile
+
+Front End Framework: Bootstrap? Bulma? W3Schools? Other?
+
+Database: What info do we want to store?
+
+Username
+Password
+Email address?
+Saved articles 
+Subscribed Feeds
+
+
+Share functionality:
+    - Mail to functionality, open up mailto and have this be the body of the Email
+    - Copy link button
+
+Phase 2:  
+    - Share between users?
+    - Friend list
+
+GET > saved articles
+POST > getting new ones
+
+
+
+
