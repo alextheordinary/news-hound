@@ -18,6 +18,7 @@ Password
 Email address?
 Saved articles 
 Subscribed Feeds
+News items / news feed
 
 
 Share functionality:
