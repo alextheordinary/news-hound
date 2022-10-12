@@ -1,6 +1,7 @@
 Bespoke News > Curate Your Rss Feeds
 
 Technology we want to use is: https://sabe.io/tutorials/rss-reader-node (rss-parser node module)
+https://www.npmjs.com/package/rss-to-json
 
 Start App > User arrives at login page
 After login > New User Setup Module > Get started, Offer some choices of Feeds
