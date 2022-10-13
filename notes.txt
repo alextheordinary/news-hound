@@ -20,6 +20,7 @@ Email address?
 Saved articles 
 Subscribed Feeds
 News items / news feed
+https://bulma.io/documentation/layout/tiles/
 
 
 Share functionality:
