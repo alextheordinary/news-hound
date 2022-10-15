@@ -8,7 +8,8 @@ Item.init(
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            autoIncrement: true
+            autoIncrement: true,
+            primaryKey: true,
         },
         url: {
             type: DataTypes.STRING,
@@ -33,7 +34,7 @@ Item.init(
             allowNull: false
         },
         feed_id: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         references: {
             model: 'feeds',
             key: 'id'
