@@ -18,10 +18,11 @@ router.get('/', async (req, res) => {
 // Post route to create a feed
 router.post('/', async (req, res) => {
     try {
-        if (req.body.name && req.body.feed_url) {
+        if (req.body.name && req.body.feed_url && req.body.source) {
             const feeds = await Feeds.create({
                 name: req.body.name,
                 feed_url: req.body.feed_url,
+                source: req.body.source,
             });
             res.status(200).json(feeds);
         } else {

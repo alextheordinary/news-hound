@@ -6,7 +6,7 @@ router.get('/', async (req, res) => {
     try {
         const users = await User.findAll({
             attributes: { exclude: ['password'] },
-            order: [['name', 'ASC']],
+            order: [['user_name', 'ASC']],
         });
 
         res.status(200).json(users);
@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
 // Get route returns one user by id
 router.get('/:id', async (req, res) => {
     try {
-        const users = await Post.findByPk(
+        const users = await User.findByPk(
             req.params.id,
         );
 
