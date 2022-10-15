@@ -38,9 +38,12 @@ router.post('/', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   
            try {
-            const feeds = await Feeds.destroy(
-                req.params.id,
-            );
+            const feeds = await Feeds.destroy({
+                where: {
+                id: req.params.id
+                }
+                })
+                
     
     
             res.status(200).json(feeds);
@@ -53,7 +56,8 @@ router.delete('/:id', async (req, res) => {
   // Delete all feeds
 
 router.delete('/', async (req, res) => {
-  
+//   where for item id, saved id and pass in some info to delete all, might need to pass in items to be able to delete all...
+
     try {
      const feeds = await Feeds.destroy(
          req.body,
@@ -65,6 +69,8 @@ router.delete('/', async (req, res) => {
      res.status(507).json(err);
  }
 });  
+
+
 
 
 module.exports = router;
