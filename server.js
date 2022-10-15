@@ -14,7 +14,7 @@ const Parser = require('./utils/Parser');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Creating the session - 5 minute maxAge for testing / grading purposes
+// Creating the session - 5 minute maxAge for testing purposes
 
 const sess = {
     secret: process.env.SESS_SECRET,
@@ -40,7 +40,7 @@ app.use(express.urlencoded({extended: true}));
 // To serve static files from the public folder
 app.use(express.static(path.join(__dirname, 'public'))); 
 
-// app.use(routes);
+app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log('Now listening'));
