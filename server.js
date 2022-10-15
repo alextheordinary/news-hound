@@ -8,7 +8,7 @@ const sequelize = require('./config/connection'); // connection.js
 // Used to store session data / cookies
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 // const helpers = require('./utils/helpers'); // handlebars helpers
-const Parser = require('./utils/Parser');
+const parser = require('./utils/Parser');
 
 // Defining the express server and the port it will run on
 const app = express();
@@ -47,5 +47,10 @@ sequelize.sync({ force: false }).then(() => {
   });
 
 const feedUrl = 'https://www.espn.com/espn/rss/nba/news';
-const parser = new Parser(feedUrl);
+const parse = async (url) => {
+  const testParse = await parser.parseFeed(url);
+  console.log(testParse);
+}
+parse(feedUrl);
+
 

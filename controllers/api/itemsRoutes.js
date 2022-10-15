@@ -2,15 +2,15 @@ const router = require('express').Router();
 const { Item, User } = require('../../models');
 
 // Get route returns all items
-router.get('/', async (req, res) => {
-    try {
-        const items = await Item.findAll();
+// router.get('/', async (req, res) => {
+//     try {
+//         const items = await Item.findAll();
 
-        res.status(200).json(items);
-    } catch (err) {
-        res.status(501).json(err);
-    }
-});
+//         res.status(200).json(items);
+//     } catch (err) {
+//         res.status(501).json(err);
+//     }
+// });
 
 // Get route returns one item by id
 router.get('/:id', async (req, res) => {
@@ -29,13 +29,23 @@ router.get('/:id', async (req, res) => {
 // Get route returns all items that a user is subscribed to
 router.get('/', async (req, res) => {
     try {
-        const items = await User.findByPk(req.params.id, {
-            include: [
-                {model: Item }
-            ]
-        });
-
-        res.status(200).json(items);
+        if (!req.body.user_id) {
+            const items = await User.findByPk(req.session.user_id, {
+                attributes: {exclude: ['password']},
+                include: [
+                    { model: Item }
+                ]
+            });
+            res.status(200).json(items);
+        } else {
+            const items = await User.findByPk(req.body.user_id, {
+                attributes: {exclude: ['password']},
+                include: [
+                    { model: Item }
+                ]
+            });
+            res.status(200).json(items);
+        }
     } catch (err) {
         res.status(501).json(err);
     }
@@ -55,7 +65,7 @@ router.post('/', async (req, res) => {
             });
             req.session.save(() => {
                 req.session.logged_in = true;
-    
+
                 res.status(200).json(item);
             });
         } else {
@@ -69,7 +79,7 @@ router.post('/', async (req, res) => {
             });
             req.session.save(() => {
                 req.session.logged_in = true;
-    
+
                 res.status(200).json(item);
             });
         }
@@ -90,6 +100,34 @@ router.delete('/:id', async (req, res) => {
             }
         );
         res.status(200).json(destroyItem);
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
+
+router.delete('/', async (req, res) => {
+    try {
+        if (!req.body.user_id) {
+            const destroyItem = await Item.destroy(
+                {
+                    where: {
+                        user_id: req.session.user_id
+                    }
+                }
+            );
+            res.status(200).json(destroyItem);
+        } else {
+            {
+                const destroyItem = await Item.destroy(
+                    {
+                        where: {
+                            user_id: req.body.user_id
+                        }
+                    }
+                );
+                res.status(200).json(destroyItem);
+            }
+        }
     } catch (err) {
         res.status(400).json(err);
     }
