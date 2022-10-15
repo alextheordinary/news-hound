@@ -31,8 +31,7 @@ router.get('/', async (req, res) => {
     try {
         const items = await User.findByPk(req.params.id, {
             include: [
-                {model: Item },
-                {model: Subscribed}
+                {model: Item }
             ]
         });
 
