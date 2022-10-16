@@ -28,13 +28,8 @@
 
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
-        {{#if logged_in }}
-        <a class="navbar-item" href="/index"> Homepage</a> |
-        <a class="navbar-item" id="logout" href="/logout"> Logout</a> |
-        {{else}}
-        <a class="navbar-item" href="/login">Login</a>
-        {{/if}}
-        </a>
+       <a class="navbar-item" href="/"> Homepage</a> 
+                      
         <a class="navbar-item">
           Manage Feeds
         </a>
@@ -58,7 +53,7 @@
 
 
             {{#if logged_in}}
-            <a class="navbar-item button is-light" id="logout" href="/logout"> Logout</a> |
+            <a class="navbar-item button is-light" id="logout"> Logout</a> 
             {{/if}}
 
           </div>

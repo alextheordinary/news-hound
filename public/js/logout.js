@@ -1,7 +1,7 @@
 // from 14-24 stu
 
 const logout = async () => {
-  const response = await fetch('/logout', {
+  const response = await fetch('/api/users/logout', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
   });
