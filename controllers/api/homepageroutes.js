@@ -1,4 +1,4 @@
-const router = require('express').Router
+const router = require('express').Router()
 const { User, Feeds, Item, Saved, Subscribed } = require('../../models');
 
 router.get('/', async (req,res)=> {
@@ -8,5 +8,8 @@ router.get('/', async (req,res)=> {
             { model: Item }
         ]
     });
+    console.log(items)
     res.render('homepage',{items})
-}) 
+});
+
+module.exports = router;
