@@ -1,74 +1,61 @@
 {{!-- logic here is from 14-28 --}}
 
 
-<script src="./js/login.js"></script>
-
 <section class="hero is-primary">
-  
+
   <div class="hero-body">
     <div class="container">
+
+      {{!-- Login form --}}
       <div class="columns is-centered">
         <div class="column is-half">
           <h1> Login here!</h1>
-          <form action="" class="box">
+          <form action="" class="box" id="login-form">
             <div class="field">
-              <label for="" class="label">Email</label>
-              <div class="control has-icons-left">
-                <input type="email" placeholder="e.g. bobsmith@gmail.com" class="input" required>
-                <span class="icon is-small is-left">
-                  <i class="fa fa-envelope"></i>
-                </span>
+              <label for="email-login" class="label">Email</label>
+              <div class="control">
+                <input type="name" placeholder="e.g. bobsmith@gmail.com" id="email-login" class="input" required>
               </div>
             </div>
             <div class="field">
               <label for="" class="label">Password</label>
-              <div class="control has-icons-left">
-                <input type="password" placeholder="*******" class="input" required>
-                <span class="icon is-small is-left">
-                  <i class="fa fa-lock"></i>
-                </span>
+              <div class="control">
+                <input type="password" placeholder="*******" id="password-login" class="input" required>
               </div>
             </div>
-                        <div class="field">
-              <button class="button is-success">
+            <div class="field">
+              <button class="button is-success" type="click" id="login-btn">
                 Login
               </button>
             </div>
           </form>
         </div>
+
+        {{!-- Sign up form --}}
         <div class="column is-half">
           <h1> Signup here!</h1>
           <form action="" class="box">
-              <div class="field">
-              <label for="" class="label">Name</label>
-              <div class="control has-icons-left">
-                <input type="email" placeholder="e.g. bobsmith@gmail.com" class="input" required>
-                <span class="icon is-small is-left">
-                  <i class="fa fa-envelope"></i>
-                </span>
+            <div class="field">
+              <label for="user_name" class="label">Name</label>
+              <div class="control">
+                <input type="user_name" placeholder="Your Name Here" id="name-signup" class="input" required>
               </div>
             </div>
             <div class="field">
-              <label for="" class="label">Email</label>
-              <div class="control has-icons-left">
-                <input type="email" placeholder="e.g. bobsmith@gmail.com" class="input" required>
-                <span class="icon is-small is-left">
-                  <i class="fa fa-envelope"></i>
-                </span>
+              <label for="email" class="label">Email</label>
+              <div class="control">
+                <input type="email" placeholder="e.g. bobsmith@gmail.com" id="email-signup" class="input" required>
               </div>
             </div>
             <div class="field">
-              <label for="" class="label">Password</label>
-              <div class="control has-icons-left">
-                <input type="password" placeholder="*******" class="input" required>
-                <span class="icon is-small is-left">
-                  <i class="fa fa-lock"></i>
-                </span>
+              <label for="password" class="label">Password</label>
+              <div class="control">
+                <input type="password" placeholder="" id="password-signup" class="input" required>
               </div>
             </div>
-                        <div class="field">
-              <button class="button is-success">
-             Signup
+            <div class="field">
+              <button class="button is-success" type="click" id="signup-btn">
+                Signup
               </button>
             </div>
           </form>
@@ -76,10 +63,7 @@
       </div>
     </div>
   </div>
-  
+
 </section>
 
-
-
-  
-    
+<script src="./js/login.js"></script>
