@@ -92,6 +92,19 @@ router.get('/seeddata/', async (req, res) => {
     res.send('Seeded data');
 });
 
+router.get('/getusers', async (req, res) => {
+    try {
+        const users = await User.findAll({
+            // attributes: { exclude: ['password'] },
+            order: [['user_name', 'ASC']],
+        });
+
+        res.status(200).json(users);
+    } catch (err) {
+        res.status(501).json(err);
+    }
+});
+
 
 
 module.exports = router;
