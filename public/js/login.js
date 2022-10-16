@@ -11,7 +11,7 @@ const loginFormHandler = async (event) => {
   
     if (email && password) {
       // Sends login data to data to the back end to attempt to login
-      const response = await fetch('/api/users/login', {
+      const response = await fetch('/login', {
         method: 'POST',
         body: JSON.stringify({ email, password }),
         headers: { 'Content-Type': 'application/json' },
