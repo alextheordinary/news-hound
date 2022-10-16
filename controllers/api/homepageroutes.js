@@ -2,14 +2,13 @@ const router = require('express').Router()
 const { User, Feeds, Item, Saved, Subscribed } = require('../../models');
 
 router.get('/', async (req,res)=> {
-    const items = await User.findByPk(req.session.user_id, {
-        attributes: {exclude: ['password']},
-        include: [
-            { model: Item }
-        ]
+    const items = await Item.findAll({
+        where: { user_id: req.session.user_id }
     });
-    console.log(items)
-    res.render('homepage', {items, logged_in: req.session.logged_in});
+    // const userItems = items.get({ plain: true });
+    const userItems = items.map(item => item.get({ plain: true }));
+    console.log(userItems)
+    res.render('homepage', {items: userItems, logged_in: req.session.logged_in});
 });
 
 module.exports = router;
