@@ -30,7 +30,7 @@
       <div class="navbar-start">
         {{#if logged_in }}
         <a class="navbar-item" href="/index"> Homepage</a> |
-        <a class="navbar-item" id="logout" href="/logout"> Logout</a> |
+        {{!-- <a class="navbar-item" id="logout" href="/logout"> Logout</a> | --}}
         {{else}}
         <a class="navbar-item" href="/login">Login</a>
         {{/if}}
@@ -58,7 +58,7 @@
 
 
             {{#if logged_in}}
-            <a class="navbar-item button is-light" id="logout" href="/logout"> Logout</a> |
+            <div class="navbar-item button is-light" id="logout"> Logout</div> |
             {{/if}}
 
           </div>
