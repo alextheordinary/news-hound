@@ -1,11 +1,13 @@
 {{#each feeds as |feed|}}
 <div class="card">
-  <div class="card-content">
-    <div class="content">
-      {{feed.feed.name}}
+    <div class="card-content">
+        <div class="content">
+            <label class="checkbox">
+                <input type="checkbox" checked>
+                {{feed.name}}
+            </label>
+            {{feed.subscribeds.createdAt}}
+        </div>
     </div>
-  </div>
 </div>
 {{/each}}
-
-
