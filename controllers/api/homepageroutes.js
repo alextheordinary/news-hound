@@ -9,7 +9,7 @@ router.get('/', async (req,res)=> {
         ]
     });
     console.log(items)
-    res.render('homepage',{items})
+    res.render('homepage', {items, logged_in: req.session.logged_in});
 });
 
 module.exports = router;
