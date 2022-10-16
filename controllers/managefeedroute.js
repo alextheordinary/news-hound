@@ -1,0 +1,15 @@
+const router = require('express').Router()
+const { User, Feeds, Item, Saved, Subscribed } = require('../models');
+
+router.get('/', async (req,res)=> {
+    const subFeedData = await Subscribed.findAll({
+        where: { user_id: req.session.user_id },
+        include: [{ model: Feeds },],
+    });
+    // const userItems = items.get({ plain: true });
+    const subFeeds = subFeedData.map(sub => sub.get({ plain: true }));
+    console.log(subFeeds);
+    res.render('manage-feeds', {feeds: subFeeds, user_id: req.session.user_id, logged_in: req.session.logged_in});
+});
+
+module.exports = router;
