@@ -65,4 +65,29 @@ router.delete('/', async (req, res) => {
     }
 });
 
+router.post('/addnew', async (req, res) => {
+    try {
+        console.log("addnew post route");
+        const feedsToAdd = req.body
+        const userID = req.session.user_id;
+        const deleteSubs = await Subscribed.destroy({
+            where: {user_id: userID}
+        });
+        console.log(deleteSubs);
+        const addedFeeds = [];
+        console.log(feedsToAdd);
+        for (let i = 0; i < feedsToAdd.length; i++) {
+            const subscribed = await Subscribed.create({
+                feed_id: feedsToAdd[i],
+                user_id: req.session.user_id
+            });
+            addedFeeds.push(subscribed);
+        }
+            res.status(200).json(addedFeeds);
+
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
+
 module.exports = router;

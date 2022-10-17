@@ -8,7 +8,7 @@ router.get('/', withAuth, async (req,res)=> {
     });
     // const userItems = items.get({ plain: true });
     const userItems = items.map(item => item.get({ plain: true }));
-    console.log(userItems)
+    console.log(userItems);
     res.render('homepage', {items: userItems, logged_in: req.session.logged_in});
 });
 
