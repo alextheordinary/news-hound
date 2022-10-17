@@ -1,21 +1,18 @@
-<h1 class="has-text-centered">Your News</h1><br>
+<p class="has-text-centered is-size-2 has-text-weight-bold">Your News</p><br>
 
-<div class="columns">
-  <div class="column is-one-quarter">
-    First column
-    {{#each items as |item|}}
-    <p>
-    {{item.headline}}<br> <a>{{item.url}}</a> <br> {{item.published_date}}
-    </p>
-    {{/each}}
+<div class="columns is-centered">
+  <div class="column is-half">
+  <div class="card is-flex-wrap-wrap">
+    <div class="card-header-title is-flex-wrap-wrap">
+      {{#each items as |item|}}
+      <p>
+      <div class="card is-flex-wrap-wrap m-6"><br>
+        <p class="has-text-weight-bold is-flex-wrap-wrap">{{item.headline}}</p><br>{{item.img_url}} <a
+          href="{{item.url}}">{{item.url}}</a> <br> {{item.published_date}}
+      </div>
+      </p>
+      {{/each}}
+    </div>
   </div>
-  <div class="column is-one-quarter">
-    Second column
   </div>
-  <div class="column is-one-quarter">
-    Third column
   </div>
-  <div class="column is-one-quarter">
-    Fourth column
-  </div>
-</div>
