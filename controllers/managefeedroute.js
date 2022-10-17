@@ -1,7 +1,8 @@
 const router = require('express').Router()
 const { User, Feeds, Item, Saved, Subscribed } = require('../models');
+const { withAuth } = require('../utils/auth');
 
-router.get('/', async (req,res)=> {
+router.get('/', withAuth, async (req,res)=> {
     const subFeedData = await Feeds.findAll({
         include: [{ model: Subscribed, where: {user_id: req.session.user_id } },],
     });

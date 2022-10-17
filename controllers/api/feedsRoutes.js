@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Feeds } = require('../../models');
 
+
 // Get route returns all feeds
 router.get('/', async (req, res) => {
     try {
