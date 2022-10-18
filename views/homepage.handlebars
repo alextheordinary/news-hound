@@ -16,14 +16,17 @@
     </div>
   </div>
 </div> --}}
-
+<button class="button" id="update-items">Refresh</button>
 <div class="columns is-multiline">
   {{#each items as |item|}}
   <div class="column is-half">
 
     <p class="card is-flex-wrap-wrap m-4"><br>
       {{item.headline}} <br>{{item.img_url}}<br> <a href={{item.url}}>{{item.url}}</a> <br> {{item.published_date}}
+      <button class="button save-toggle" data-itemid={{item.id}} data-status="false">Save</button>
     </p>
   </div>
   {{/each}}
 </div>
+
+<script src="js/update-items.js"></script>

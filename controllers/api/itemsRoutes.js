@@ -135,7 +135,7 @@ router.delete('/', async (req, res) => {
     }
 });
 
-// Run the parser function to see items with fresh RSS data
+// Run the parser function to update items with fresh RSS data
 router.post('/runparse/', async (req, res) => {
     try {
         const user_id = req.session.user_id;
@@ -189,7 +189,7 @@ router.post('/runparse/', async (req, res) => {
         const restoreSaves = await Saved.bulkCreate(resaveObjects, { validate: true });
         // End of saved item preservation
 
-        // Get an array of subscribed feeds, parse each feed, and add results to Items table via parser.parseFeed()
+        // Get an array of subscribed feeds, parse each feed, and add results to Items table.
         const subFeeds = subFeedData.map(sub => sub.get({ plain: true }));
 
         for (let i = 0; i < subFeeds.length; i++) {
@@ -211,7 +211,7 @@ router.post('/runparse/', async (req, res) => {
             const addFeedData = await Item.bulkCreate(feedData, { validate: true });
             //
         }
-        res.status(200).send(`Ran parse of userid ${user_id}`); 
+        res.status(200).send(`Ran parse for userid ${user_id}`); 
     } catch (err) {
         res.status(400).json(err);
     }
