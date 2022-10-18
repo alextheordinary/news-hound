@@ -11,6 +11,7 @@
     </div>
 </div>
 {{/each}}
+<br>
 <button class="button" id="update-feeds">Save Changes</button>
 
 <script>
@@ -32,7 +33,15 @@
             headers: { 'Content-Type': 'application/json' },
         });
         if (response.ok) {
+         const response = await fetch('api/items/runparse/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+          });
+          if (response.ok) {
             document.location.replace('/');
+          } else {
+            alert('Failed to update items');
+          }
         } else {
             alert('Failed to update items');
         }
