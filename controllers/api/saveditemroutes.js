@@ -9,7 +9,7 @@ router.get('/saved', withAuth, async (req,res)=> {
             { model: Item }
         ]
     });
-    res.render('saved',{items})
+    res.render('saved',{items, logged_in: req.session.logged_in})
 });
 
 module.exports = router;
