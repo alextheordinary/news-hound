@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { User, Feeds, Item, Saved, Subscribed } = require('../../models');
-const parser = require('../../utils/Parser');
+// const parser = require('../../utils/Parser');
+const RSSParser = require('rss-parser');
 
 // Get route returns all items
 // router.get('/', async (req, res) => {
@@ -172,7 +173,7 @@ router.post('/runparse/', async (req, res) => {
                 user_id: user_id
             });
         });
-        const addSavedItems = await Item.bulkCreate(savedToAdd, {validate: true});
+        const addSavedItems = await Item.bulkCreate(savedToAdd, { validate: true });
         const resaveItems = addSavedItems.map(item => item.get({ plain: true }));
         // Create an array of {user_id, item_id} object pairs to add back into Saved
         const resaveObjects = [];
@@ -185,21 +186,32 @@ router.post('/runparse/', async (req, res) => {
             );
         });
         // Restore the saved items with a bulk create
-        const restoreSaves = await Saved.bulkCreate(resaveObjects, {validate: true});
+        const restoreSaves = await Saved.bulkCreate(resaveObjects, { validate: true });
         // End of saved item preservation
 
         // Get an array of subscribed feeds, parse each feed, and add results to Items table via parser.parseFeed()
         const subFeeds = subFeedData.map(sub => sub.get({ plain: true }));
-        subFeeds.forEach(feed => {
-            const parse = async (url, feed_id) => {
-                const testParse = await parser.parseFeed(url, user_id, feed_id);
-            };
-            const feedUrl = feed.feed.feed_url;
-            const feedID = feed.feed.id;
-            parse(feedUrl, feedID);
-        });
 
-        res.status(200).send(`Items parsed and added for userid ${user_id}`);
+        for (let i = 0; i < subFeeds.length; i++) {
+            const feedUrl = subFeeds[i].feed.feed_url;
+            const feedID = subFeeds[i].feed.id;
+            //
+            const feedData = [];
+            const feed = await new RSSParser().parseURL(feedUrl);
+            feed.items.forEach(item => {
+                if (!item.isoDate) {
+
+                } else {
+                    const url = item.link;
+                    const headline = item.title;
+                    const published_date = item.isoDate;
+                    feedData.push({ url, headline, published_date, feed_id: feedID, user_id });
+                }
+            });
+            const addFeedData = await Item.bulkCreate(feedData, { validate: true });
+            //
+        }
+        res.status(200).send(`Ran parse of userid ${user_id}`); 
     } catch (err) {
         res.status(400).json(err);
     }

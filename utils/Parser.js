@@ -1,3 +1,5 @@
+// This file isn't really need for production anymore. Moved relevant code to itemRoutes to fix an async await problem
+
 const RSSParser = require('rss-parser');
 const {Item, User, Feeds} = require('../models');
 
