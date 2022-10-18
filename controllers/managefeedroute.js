@@ -3,7 +3,7 @@ const { User, Feeds, Item, Saved, Subscribed } = require('../models');
 const { withAuth } = require('../utils/auth');
 
 
-router.get('/', withauth, async (req,res)=> {
+router.get('/', withAuth, async (req,res)=> {
     const feedData = await Feeds.findAll();
     const subFeedData = await Subscribed.findAll(
         {
