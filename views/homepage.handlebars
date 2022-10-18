@@ -1,18 +1,29 @@
 <p class="has-text-centered is-size-2 has-text-weight-bold">Your News</p><br>
 
-<div class="columns is-centered">
+{{!-- <div class="columns is-centered">
   <div class="column is-half">
-  <div class="card is-flex-wrap-wrap">
-    <div class="card-header-title is-flex-wrap-wrap">
-      {{#each items as |item|}}
-      <p>
-      <div class="card is-flex-wrap-wrap m-6"><br>
-        <p class="has-text-weight-bold is-flex-wrap-wrap">{{item.headline}}</p><br>{{item.img_url}} <a
-          href="{{item.url}}">{{item.url}}</a> <br> {{item.published_date}}
+    <div class="is-flex-wrap-wrap">
+      <div class="is-flex-wrap-wrap">
+        {{#each items as |item|}}
+        <p>
+        <div class="card is-flex-wrap-wrap m-6"><br>
+          <p class="has-text-weight-bold is-flex-wrap-wrap card-header-title">{{item.headline}}</p><br>{{item.img_url}}
+          <a href="{{item.url}}">{{item.url}}</a> <br> {{item.published_date}}
+        </div>
+        </p>
+        {{/each}}
       </div>
-      </p>
-      {{/each}}
     </div>
   </div>
+</div> --}}
+
+<div class="columns is-multiline">
+  {{#each items as |item|}}
+  <div class="column is-half">
+
+    <p class="card is-flex-wrap-wrap m-4"><br>
+      {{item.headline}} <br>{{item.img_url}}<br> <a href={{item.url}}>{{item.url}}</a> <br> {{item.published_date}}
+    </p>
   </div>
-  </div>
+  {{/each}}
+</div>
