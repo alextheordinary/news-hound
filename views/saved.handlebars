@@ -1,85 +1,17 @@
-{{!-- logic here is from 14-28 --}}
 
+<p class="has-text-centered is-size-2 has-text-weight-bold is-primary has-text-primary">Your News</p><br>
 
-<script src="./js/login.js"></script>
-
-<section class="hero is-primary">
-  
-  <div class="hero-body">
-    <div class="container">
-      <div class="columns is-centered">
-        <div class="column is-half">
-          <h1> Login here!</h1>
-          <form action="" class="box">
-            <div class="field">
-              <label for="" class="label">Email</label>
-              <div class="control has-icons-left">
-                <input type="email" placeholder="e.g. bobsmith@gmail.com" class="input" required>
-                <span class="icon is-small is-left">
-                  <i class="fa fa-envelope"></i>
-                </span>
-              </div>
-            </div>
-            <div class="field">
-              <label for="" class="label">Password</label>
-              <div class="control has-icons-left">
-                <input type="password" placeholder="*******" class="input" required>
-                <span class="icon is-small is-left">
-                  <i class="fa fa-lock"></i>
-                </span>
-              </div>
-            </div>
-                        <div class="field">
-              <button class="button is-success">
-                Login
-              </button>
-            </div>
-          </form>
-        </div>
-        <div class="column is-half">
-          <h1> Signup here!</h1>
-          <form action="" class="box">
-              <div class="field">
-              <label for="" class="label">Name</label>
-              <div class="control has-icons-left">
-                <input type="email" placeholder="e.g. bobsmith@gmail.com" class="input" required>
-                <span class="icon is-small is-left">
-                  <i class="fa fa-envelope"></i>
-                </span>
-              </div>
-            </div>
-            <div class="field">
-              <label for="" class="label">Email</label>
-              <div class="control has-icons-left">
-                <input type="email" placeholder="e.g. bobsmith@gmail.com" class="input" required>
-                <span class="icon is-small is-left">
-                  <i class="fa fa-envelope"></i>
-                </span>
-              </div>
-            </div>
-            <div class="field">
-              <label for="" class="label">Password</label>
-              <div class="control has-icons-left">
-                <input type="password" placeholder="*******" class="input" required>
-                <span class="icon is-small is-left">
-                  <i class="fa fa-lock"></i>
-                </span>
-              </div>
-            </div>
-                        <div class="field">
-              <button class="button is-success">
-             Signup
-              </button>
-            </div>
-          </form>
-        </div>
+<div class="column is-centered">
+        {{#each items as |item|}}
+      
+      <div class="card is-full m-3"><br>
+        <p class="has-text-weight-bold is-flex-wrap-wrap">{{item.headline}}</p><br>{{item.img_url}} 
+        <a href="{{item.url}}">{{item.url}}</a> <br> {{item.published_date}}
+      <button class="button is-primary m-3">Save</button>
       </div>
-    </div>
+      
+      {{/each}}
+   
   </div>
-  
-</section>
-
-
-
-  
-    
+  </div>
+  </div>
