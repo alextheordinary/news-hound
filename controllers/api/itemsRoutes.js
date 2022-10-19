@@ -205,6 +205,8 @@ router.post('/runparse/', async (req, res) => {
                     const url = item.link;
                     const headline = item.title;
                     const published_date = item.isoDate;
+
+                    // Checks to see if the URL is already saved and only add it if it's not a duplicate.
                     function isSaved(item) {
                         return item.url === url;
                     }
