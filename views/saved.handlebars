@@ -1,17 +1,20 @@
+<div class="has-text-centered is-size-2 has-text-weight-bold has-text-link"><p>Your News</p>
 
-<p class="has-text-centered is-size-2 has-text-weight-bold has-text-primary">Your News</p><br>
+</div><br>
 
-<div class="column is-centered">
-        {{#each items as |item|}}
-      
-      <div class="card is-full m-3"><br>
-        <p class="has-text-weight-bold is-flex-wrap-wrap">{{item.headline}}</p><br>{{item.img_url}} 
-        <a href="{{item.url}}">{{item.url}}</a> <br> {{item.published_date}}
-      <button class="button is-primary m-3">Save</button>
-      </div>
-      
-      {{/each}}
-   
+
+<div class="columns is-multiline has-background-primary">
+  {{#each items as |item|}}
+  <div class="column is-half">
+
+    <div class="card is-flex-wrap-wrap m-4 p-4 has-background-info has-text-white has-text-weight-semibold">
+      <a class="has-text-white is-size-4 is-underlined" href='{{item.url}}' target="_blank">{{item.headline}}</a>
+    <p class="is-size-6 mt-3">  {{format_date item.published_date}} @ {{format_time item.published_date}}</p><br>
+      <button class="button save-toggle has-background-light has-text-black m-2" data-itemid={{item.id}} data-status={{#if
+        item.saved}}"true">Unsave</button>{{/if}}{{#unless item.saved}}"false">Save</button>{{/unless}}
+    </div>
   </div>
-  </div>
-  </div>
+  {{/each}}
+</div>
+
+<script src="js/saved-items.js"></script>
