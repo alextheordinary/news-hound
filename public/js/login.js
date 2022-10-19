@@ -62,7 +62,7 @@ const signupFormHandler = async (event) => {
             headers: { 'Content-Type': 'application/json' },
           });
           if (response.ok) {
-            document.location.replace('/');
+            document.location.replace('/managefeeds');
           } else {
             alert('Failed to update items');
           }
