@@ -15,8 +15,8 @@
 
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <h1 class="big-font title is-1 has-text-primary">NewsHound</h1>
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <h1 class="big-font title is-1"><a href="/" class="has-text-primary">NewsHound</a></h1>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -25,17 +25,12 @@
 
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
-        {{#if logged_in }}
-        <a class="navbar-item" href="/"> Homepage</a>
-                {{else}}
-        <a class="navbar-item" href="/login">Login</a>
-        {{/if}}
-        </a>
+       
         <a class="navbar-item" href="/managefeeds">Manage Feeds</a>
 
-        <a class="navbar-item" href ="/saved">Saved Articles</a>
+        <a class="navbar-item" href="/saved">Saved Articles</a>
 
-    
+
 
       </div>
 
@@ -48,7 +43,7 @@
 
 
             {{#if logged_in}}
-            <div class="navbar-item button is-light" id="logout"> Logout</div> 
+            <div class="navbar-item button is-light" id="logout"> Logout</div>
             {{/if}}
 
           </div>
@@ -71,6 +66,33 @@
   {{#if logged_in }}
   <script src="/js/logout.js"></script>
   {{/if}}
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // Get all "navbar-burger" elements
+      const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+      // Add a click event on each of them
+      $navbarBurgers.forEach(el => {
+        el.addEventListener('click', () => {
+
+          // Get the target from the "data-target" attribute
+          const target = el.dataset.target;
+          const $target = document.getElementById(target);
+
+          // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+          el.classList.toggle('is-active');
+          $target.classList.toggle('is-active');
+
+        });
+      });
+
+    });
+
+  </script>
+
+
 </body>
 
 </html>
