@@ -1,6 +1,12 @@
+<div class="has-text-centered is-size-2 has-text-weight-bold has-text-link"><p>Your News</p>
+
+<button class="button is-primary" id="update-feeds">Save Changes</button>
+
+</div><br>
+
 {{#each feeds as |feed|}}
-<div class="card">
-    <div class="card-content">
+<div class="card is-flex-wrap-wrap m-2 p-2 has-background-info has-text-white has-text-weight-semibold">
+    <div class="card-content has-text-white is-size-4 ">
         <div class="content">
             <label class="checkbox">
                 <input type="checkbox" class="feed-check" {{#if feed.subscribed}}checked{{/if}}
@@ -12,6 +18,6 @@
 </div>
 {{/each}}
 <br>
-<button class="button" id="update-feeds">Save Changes</button>
+
 
 <script src="/js/manage-feeds.js"></script>
