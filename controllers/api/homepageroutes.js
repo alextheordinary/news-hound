@@ -4,11 +4,12 @@ const { withAuth } = require('../../utils/auth');
 
 router.get('/', withAuth, async (req,res)=> {
     const items = await Item.findAll({
+        include: [{model: Saved}],
         where: { user_id: req.session.user_id }
     });
     // const userItems = items.get({ plain: true });
     const userItems = items.map(item => item.get({ plain: true }));
-    // console.log(userItems);
+    console.log(userItems);
     res.render('homepage', {items: userItems, logged_in: req.session.logged_in});
 });
 
