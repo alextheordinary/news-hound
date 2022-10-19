@@ -1,5 +1,9 @@
 # NewsHound
 
+[Deployed Site](https://serene-plateau-74924.herokuapp.com/)
+
+[View the repo here!](https://github.com/alextheordinary/news-hound)
+
 ## Description
 The NewsHound application is an application that is used to aggregate news from several RSS feeds that you can choose. Upon signup, you will be redirected to the manage feeds section where you will make your selections. 
 
