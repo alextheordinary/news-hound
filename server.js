@@ -7,7 +7,7 @@ const routes = require('./controllers'); // importing routes from controllers/in
 const sequelize = require('./config/connection'); // connection.js
 // Used to store session data / cookies
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-// const helpers = require('./utils/helpers'); // handlebars helpers
+const helpers = require('./utils/helpers'); // handlebars helpers
 
 
 // Defining the express server and the port it will run on
@@ -29,7 +29,7 @@ const sess = {
   };
 
 // Settings up handlebars as the template engine
-const hbs = exphbs.create(); // {helpers}
+const hbs = exphbs.create({helpers}); // 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
