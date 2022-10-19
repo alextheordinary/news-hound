@@ -15,29 +15,36 @@ const updateItemsHandler = async (event) => {
 
 const saveItemHandler = async (event) => {
   event.preventDefault();
-  const itemID = event.target.dataset.itemid;
+  const pressedButton = event.target;
+  const itemID = pressedButton.dataset.itemid;
+  console.log(`item id ${itemID}`);
   const buttonStatus = event.target.dataset.status;
+  console.log(`button status ${buttonStatus}`);
   if (buttonStatus === 'false') {
     const response = await fetch('api/saved/', {
       method: 'POST',
-      body: { item_id: itemID },
+      body: JSON.stringify({ item_id: itemID }),
       headers: { 'Content-Type': 'application/json' },
     });
     if (response.ok) {
       // toggle the button between 'Save' and 'Unsave'
+      pressedButton.dataset.status = 'true';
+      pressedButton.textContent = "Unsave";
     } else {
-      alert('Failed to update items');
+      alert('Failed to post');
     }
   } else {
     const response = await fetch('api/saved/', {
       method: 'DELETE',
-      body: { item_id: itemID },
+      body: JSON.stringify({ item_id: itemID }),
       headers: { 'Content-Type': 'application/json' },
     });
     if (response.ok) {
       // toggle the button between 'Save' and 'Unsave'
+      pressedButton.dataset.status = 'false';
+      pressedButton.textContent = "Save";
     } else {
-      alert('Failed to update items');
+      alert('Failed to delete');
     }
   }
 
