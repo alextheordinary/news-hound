@@ -17,13 +17,14 @@
   </div>
 </div> --}}
 <button class="button" id="update-items">Refresh</button>
-<div class="columns is-multiline">
+<div class="columns is-multiline has-background-primary">
   {{#each items as |item|}}
   <div class="column is-half">
 
-    <p class="card is-flex-wrap-wrap m-4"><br>
-      {{item.headline}} <br>{{item.img_url}}<br> <a href={{item.url}}>{{item.url}}</a> <br> {{item.published_date}}
-      <button class="button save-toggle" data-itemid={{item.id}} data-status={{#if item.saved}}"true">Unsave</button>{{/if}}{{#unless item.saved}}"false">Save</button>{{/unless}}
+
+    <p class="card is-flex-wrap-wrap m-4 has-background-info has-text-white"><br>
+      <a class='has-text-white'href='{{item.url}}' target="_blank">{{item.headline}}</a>{{item.img_url}}<br></a> <br> {{item.published_date}}<br>
+      <button class="button save-toggle has-background-light has-text-black" data-itemid={{item.id}} data-status={{#if item.saved}}"true">Unsave</button>{{/if}}{{#unless item.saved}}"false">Save</button>{{/unless}}
     </p>
   </div>
   {{/each}}
