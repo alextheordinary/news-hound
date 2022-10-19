@@ -205,13 +205,23 @@ router.post('/runparse/', async (req, res) => {
                     const url = item.link;
                     const headline = item.title;
                     const published_date = item.isoDate;
-                    feedData.push({ url, headline, published_date, feed_id: feedID, user_id });
+
+                    // Checks to see if the URL is already saved and only add it if it's not a duplicate.
+                    function isSaved(item) {
+                        return item.url === url;
+                    }
+                    const isDuplicateUrl = savedToAdd.find(isSaved);
+                    if (isDuplicateUrl) {
+
+                    } else {
+                        feedData.push({ url, headline, published_date, feed_id: feedID, user_id });
+                    }
                 }
             });
             const addFeedData = await Item.bulkCreate(feedData, { validate: true });
             //
         }
-        res.status(200).send(`Ran parse for userid ${user_id}`); 
+        res.status(200).send(`Ran parse for userid ${user_id}`);
     } catch (err) {
         res.status(400).json(err);
     }
